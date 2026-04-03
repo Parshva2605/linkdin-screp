@@ -258,12 +258,61 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'extractProfile') {
     const profileData = extractProfileData();
     sendResponse(profileData);
-  } else if (request.action === 'deepScrape') {
+    return true;
+  } 
+  
+  if (request.action === 'deepScrape') {
     // Use the deep scraper
-    deepScrapeProfile().then(data => {
-      sendResponse(data);
-    });
+    if (typeof deepScrapeProfile === 'function') {
+      deepScrapeProfile().then(data => {
+        sendResponse(data);
+      }).catch(err => {
+        sendResponse({ error: err.message });
+      });
+    } else {
+      sendResponse({ error: 'Deep scraper not loaded' });
+    }
     return true; // Keep channel open for async response
+  } 
+  
+  if (request.action === 'smartScrape') {
+    // Use the smart scraper (properly separates content types)
+    if (typeof smartScrapeProfile === 'function') {
+      smartScrapeProfile().then(data => {
+        sendResponse(data);
+      }).catch(err => {
+        sendResponse({ error: err.message });
+      });
+    } else {
+      sendResponse({ error: 'Smart scraper not loaded' });
+    }
+    return true;
+  } 
+  
+  if (request.action === 'scrapeMyProfile') {
+    // Use my profile scraper with DOM waiting
+    if (typeof scrapeMyProfile === 'function') {
+      scrapeMyProfile().then(data => {
+        sendResponse(data);
+      }).catch(err => {
+        sendResponse({ error: err.message });
+      });
+    } else {
+      // Function not loaded yet, try to call it after a delay
+      setTimeout(() => {
+        if (typeof scrapeMyProfile === 'function') {
+          scrapeMyProfile().then(data => {
+            sendResponse(data);
+          }).catch(err => {
+            sendResponse({ error: err.message });
+          });
+        } else {
+          sendResponse({ error: 'My profile scraper not loaded. Please refresh the page and try again.' });
+        }
+      }, 1000);
+    }
+    return true;
   }
+  
   return true;
 });

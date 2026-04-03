@@ -1,12 +1,108 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.pyw
 .Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Virtual Environments
 venv/
 env/
 .venv
+ENV/
+env.bak/
+venv.bak/
+
+# Node.js
 node_modules/
-.DS_Store
-*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment Variables
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# LinkedIn Profile JSON files (sensitive data)
+linkedin-profile-*.json
+
+# Chrome Extension (packaged)
+*.crx
+*.pem
+*.zip
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets & Tokens
+*.key
+*.pem
+secrets.json
+credentials.json
+
+# Personal notes
+TODO.md
+NOTES.md
+scratch.md
