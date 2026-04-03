@@ -1,0 +1,3 @@
+@echo off
+echo Starting LinkedIn Profile Analyzer Backend...
+python app.py

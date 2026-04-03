@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Analyzer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h1>Profile Analyzer</h1>
+    </div>
+
+    <div id="status" class="status">
+      <p>Navigate to a LinkedIn profile to analyze</p>
+    </div>
+
+    <div id="content" class="content hidden">
+      <div class="profile-preview">
+        <div class="avatar-placeholder"></div>
+        <div class="profile-info">
+          <h2 id="profileName">-</h2>
+          <p id="profileHeadline">-</p>
+        </div>
+      </div>
+
+      <button id="analyzeBtn" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M13 10V3L4 14h7v7l9-11h-7z" fill="currentColor"/>
+        </svg>
+        Quick Analyze
+      </button>
+
+      <button id="deepAnalyzeBtn" class="btn-primary" style="margin-top: 10px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" fill="currentColor"/>
+        </svg>
+        Deep Analyze (All Data)
+      </button>
+
+      <button id="debugBtn" class="btn-secondary" style="width: 100%; margin-top: 10px;">
+        Debug - Show Raw Data
+      </button>
+
+      <div id="results" class="results hidden">
+        <div class="score-card">
+          <div class="score-circle">
+            <svg width="120" height="120">
+              <circle cx="60" cy="60" r="54" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+              <circle id="scoreCircle" cx="60" cy="60" r="54" stroke="#3b82f6" stroke-width="8" fill="none" 
+                      stroke-dasharray="339.292" stroke-dashoffset="339.292" 
+                      transform="rotate(-90 60 60)" stroke-linecap="round"/>
+            </svg>
+            <div class="score-text">
+              <span id="scoreValue">0</span>
+              <span class="score-label">Score</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="insights">
+          <h3>Insights</h3>
+          <div id="insightsList"></div>
+        </div>
+
+        <div class="actions">
+          <button id="exportBtn" class="btn-secondary">Export Data</button>
+          <button id="detailedBtn" class="btn-secondary">Detailed Report</button>
+        </div>
+      </div>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Analyzing profile...</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="#" id="settingsLink">Settings</a>
+      <span class="divider">•</span>
+      <a href="#" id="helpLink">Help</a>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
